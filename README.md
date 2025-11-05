@@ -1,6 +1,6 @@
 # Wireframe Game / Game engine
 
-A game / game engine using [Raylib](https://github.com/raysan5/raylib) with a `"Wireframe"` visual style
+A game / game engine using [Raylib](https://github.com/raysan5/raylib) with a `"Wireframe"` visual style, now ported to C
 
 <img src="readme/menu.png">
 
@@ -18,7 +18,7 @@ The project is designed in such a way that compiling should not be a hard task. 
     - [Make](https://www.gnu.org/software/make/) (GNU make or similar)
     - [gcc](https://gcc.gnu.org/) or [clang](https://clang.llvm.org/) (edit the `Makefile` to change the compiler)
 (or any compiler with C++20 support)
-    - C and C++ runtime (libstdc++)
+    - C runtime (libstdc++)
     - Any other dependencies should be baked in the project itself.
 
  - To compile, just run `make` at the project's root.

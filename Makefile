@@ -1,6 +1,6 @@
 .PHONY: clear release
-CC = clang++
-WINDOWS_COMPILER = x86_64-w64-mingw32-g++
+CC = clang
+WINDOWS_COMPILER = x86_64-w64-mingw32-gcc
 
 DISABLED_WARNINGS = -Wno-missing-field-initializers -Wno-format-overflow -Wno-unused-command-line-argument -Wno-missing-braces
 
@@ -19,10 +19,10 @@ SRCDIR = src
 OBJDIR = build/posix
 WINOBJDIR = build/win32
 
-SRC = $(wildcard $(SRCDIR)/*.cpp)
+SRC = $(wildcard $(SRCDIR)/*.c)
 
-OBJ = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRC))
-WINOBJ = $(patsubst $(SRCDIR)/%.cpp, $(WINOBJDIR)/%.o, $(SRC))
+OBJ = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
+WINOBJ = $(patsubst $(SRCDIR)/%.c, $(WINOBJDIR)/%.o, $(SRC))
 
 # Default target for Linux
 wireframe: $(OBJ)
@@ -35,12 +35,12 @@ wireframe.exe: $(WINOBJ)
 	$(WINDOWS_COMPILER) $^ $(FLAGS) $(WINDOWS_FLAGS) -o wireframe.exe
 
 # Compile object files for Linux
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(OBJDIR)
 	$(CC) $(FLAGS) $(POSIX_FLAGS) -c $< -o $@
 
 # Compile object files for Windows
-$(WINOBJDIR)/%.o: $(SRCDIR)/%.cpp
+$(WINOBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(WINOBJDIR)
 	$(WINDOWS_COMPILER) $(FLAGS) $(WINDOWS_FLAGS) -c $< -o $@
 
