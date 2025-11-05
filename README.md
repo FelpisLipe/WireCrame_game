@@ -17,8 +17,8 @@ The project is designed in such a way that compiling should not be a hard task. 
  - Dependencies
     - [Make](https://www.gnu.org/software/make/) (GNU make or similar)
     - [gcc](https://gcc.gnu.org/) or [clang](https://clang.llvm.org/) (edit the `Makefile` to change the compiler)
-(or any compiler with C++20 support)
-    - C runtime (libstdc++)
+(or any compiler with C support)
+    - C runtime (glibc)
     - Any other dependencies should be baked in the project itself.
 
  - To compile, just run `make` at the project's root.
